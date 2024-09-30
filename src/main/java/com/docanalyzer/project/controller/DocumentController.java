@@ -16,7 +16,7 @@ public class DocumentController {
     private DocumentService documentService;
 
     @GetMapping("/word-frequency/{documentId}")
-    public Map<String, Long> getWordFrequency(@PathVariable Long documentId) {
+    public Map<String, Long> getWordFrequency(@PathVariable Long documentId) throws Throwable {
         return documentService.getWordFrequency(documentId);
     }
 }
