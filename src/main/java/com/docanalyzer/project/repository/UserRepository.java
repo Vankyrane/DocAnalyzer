@@ -13,5 +13,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE u.registrationDate < :endDate AND NOT EXISTS "
             + "(SELECT d FROM Document d WHERE d.user = u AND d.uploadDate BETWEEN :startDate AND :endDate)")
-    List<User> findInactiveUsers();
+    List<User> findInactiveUsers(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 }
