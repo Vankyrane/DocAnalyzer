@@ -17,10 +17,7 @@ public class DocumentServiceImpl implements  DocumentService {
 
     @Autowired
     private DocumentRepository documentRepository;
-
     private static final Set<String> filterWords = Set.of("the", "me", "you", "i", "of", "and", "a", "we");
-
-
     @Override
     public Map<String, Long> getWordFrequency(Long documentId) throws Throwable {
         org.w3c.dom.Document document = (org.w3c.dom.Document) documentRepository.findById(documentId).orElseThrow(() -> new EntityNotFoundException("Document not found"));
