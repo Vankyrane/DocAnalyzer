@@ -17,8 +17,11 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    //API to fetch Inactive Users
     @GetMapping("/api/public/users/inactive")
-    public List<User> getInactiveUsers(){
-            return userService.getInactiveUsers();
+    public List<User> getInactiveUsers(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
+            return userService.getInactiveUsers(startDate, endDate);
     }
 }
