@@ -1,7 +1,15 @@
 package com.docanalyzer.project.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="users")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    @Column(nullable = false, unique = true)
     private String emailId;
 
     public User(Long userId, String emailId) {
@@ -9,6 +17,7 @@ public class User {
         this.emailId = emailId;
     }
 
+    //Getters and Setters
     public Long getUserId() {
         return userId;
     }

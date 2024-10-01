@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//Service class to prepare request and send to Google Gemini
 @Service
 public class AIApiClient {
 
@@ -29,12 +30,11 @@ public class AIApiClient {
 
     public List<String> getSynonyms(String prompt) {
 
-        //return List.of("synonym1", "synonym2", "synonym3");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + apiKey);
 
-        // Build request body
+        // Build request body for Google Gemini
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("prompt", prompt);
 
@@ -48,7 +48,6 @@ public class AIApiClient {
         List<String> synonyms = new ArrayList<>();
 
         if (result != null && result.containsKey("choices")) {
-            // Example response processing: you might need to adjust this based on actual API response
             List<Map<String, Object>> choices = (List<Map<String, Object>>) result.get("choices");
             for (Map<String, Object> choice : choices) {
                 String text = (String) choice.get("text");

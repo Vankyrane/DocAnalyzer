@@ -10,6 +10,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+//Service to find the word frequency based on business rules
 @Service
 public class DocumentServiceImpl implements  DocumentService {
 
@@ -17,6 +18,8 @@ public class DocumentServiceImpl implements  DocumentService {
 
     @Autowired
     private DocumentRepository documentRepository;
+
+    //Set of strings to maintain commons words to be filtered.
     private static final Set<String> filterWords = Set.of("the", "me", "you", "i", "of", "and", "a", "we");
     @Override
     public Map<String, Long> getWordFrequency(Long documentId) throws Throwable {
@@ -26,6 +29,7 @@ public class DocumentServiceImpl implements  DocumentService {
 
         String[] words = content.toLowerCase().split("\\W+");
 
+        //Java streams implementation to filter and collect common words
         Map<String, Long> wordCountMap = Arrays.stream(words)
                 .filter(word -> !filterWords.contains(word))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));

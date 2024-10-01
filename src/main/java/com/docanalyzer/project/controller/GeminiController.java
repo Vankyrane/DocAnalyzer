@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+//API to get Synonyms for the words
 @RestController
 public class GeminiController {
 
