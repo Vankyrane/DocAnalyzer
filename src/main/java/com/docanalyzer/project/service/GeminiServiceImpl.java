@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+//Service Layer to filter the longest word to find the synonyms
 @Service
 public class GeminiServiceImpl implements GeminiService {
 
@@ -29,9 +30,8 @@ public class GeminiServiceImpl implements GeminiService {
                 .max(Comparator.comparingInt(String::length))
                 .orElse("");
 
-        // Using Google Gemini API to suggest synonyms for the longest word
+        // Preparing prompt for suggestion from Google Gemini
         String prompt = "Suggest synonyms for the word: " + longestWord;
         return aiApiClient.getSynonyms(prompt);
-        //return null;
     }
 }

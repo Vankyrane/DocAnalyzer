@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Map;
 
@@ -17,6 +16,7 @@ public class DocumentController {
     @Autowired
     private DocumentService documentService;
 
+    //API to make a call to count word frequency
     @GetMapping("/word-frequency/{documentId}")
     public ResponseEntity<Map<String, Long>> getWordFrequency(@PathVariable Long documentId) throws Throwable {
             Map<String, Long> wordFrequency = documentService.getWordFrequency(documentId);
